@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <title>NABELION AI TRADER</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brandmark">N</div>
+  <div><strong>NABELION</strong><small>AI TRADER · FREE EDITION</small></div>
+  <span class="live-dot">● PERSONAL</span>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">MULTI-MARKET ANALYSIS</p>
+      <h1>Trade with a plan.<br><span>Not with guesses.</span></h1>
+      <p class="sub">A free technical-analysis assistant for practice, research and disciplined decisions.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Market setup</h2><span class="tag">STEP 1</span></div>
+    <label>Market category</label>
+    <select id="category">
+      <option value="forex">Forex</option>
+      <option value="crypto">Crypto</option>
+      <option value="stocks">US stocks</option>
+      <option value="commodities">Gold / commodities</option>
+      <option value="indices">Indices</option>
+    </select>
+    <label>Instrument</label>
+    <select id="symbol"></select>
+    <label>Analysis timeframe</label>
+    <div class="timeframes" id="timeframes">
+      <button data-interval="1min">1M</button><button data-interval="5min">5M</button>
+      <button data-interval="15min" class="selected">15M</button><button data-interval="1h">1H</button>
+      <button data-interval="4h">4H</button>
+    </div>
+    <div class="actions">
+      <button class="primary" id="analyse">Analyse market</button>
+      <button class="secondary" id="openChart">Open chart</button>
+    </div>
+    <p class="hint">Data availability depends on your provider plan and instrument. Gold, indices and some symbols may not be included in the free data tier.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Analysis result</h2><span class="tag">STEP 2</span></div>
+    <div class="signal-card neutral" id="signalCard">
+      <span class="eyebrow">CURRENT SETUP</span>
+      <div class="signal" id="signal">WAIT</div>
+      <p id="reason">Choose a market and tap Analyse market.</p>
+      <small id="updated">No analysis yet</small>
+    </div>
+    <div class="metrics">
+      <div><small>Last price</small><strong id="price">—</strong></div>
+      <div><small>RSI (14)</small><strong id="rsi">—</strong></div>
+      <div><small>EMA 9 / 21</small><strong id="ema">—</strong></div>
+      <div><small>MACD</small><strong id="macd">—</strong></div>
+      <div><small>ATR (14)</small><strong id="atr">—</strong></div>
+      <div><small>Trend</small><strong id="trend">—</strong></div>
+    </div>
+    <div class="levels">
+      <div><span>Support (recent)</span><strong id="support">—</strong></div>
+      <div><span>Resistance (recent)</span><strong id="resistance">—</strong></div>
+      <div><span>Illustrative stop-loss</span><strong id="stop">—</strong></div>
+      <div><span>Illustrative target (2R)</span><strong id="target">—</strong></div>
+    </div>
+    <p class="hint" id="explanation">Signals are rule-based estimates, not predictions or guaranteed trades.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Trading chart</h2><span class="tag">TRADINGVIEW</span></div>
+    <div class="chart-wrap" id="chart">
+      <p class="hint">Tap “Open chart” to load the selected market on TradingView.</p>
+    </div>
+    <p class="hint">TradingView provides the chart. Its market data may be delayed or subject to exchange permissions.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Free data connection</h2><span class="tag">OPTIONAL</span></div>
+    <p class="sub">Create a free Twelve Data account and paste your API key below. Never share your key publicly.</p>
+    <label for="apiKey">Twelve Data API key</label>
+    <input id="apiKey" type="password" autocomplete="off" placeholder="Paste your personal API key">
+    <div class="actions">
+      <button class="primary" id="saveKey">Save on this phone</button>
+      <button class="secondary" id="clearKey">Clear key</button>
+    </div>
+    <p class="hint" id="keyStatus">No API key saved. Demo calculations are unavailable until data is connected.</p>
+    <a href="https://twelvedata.com/pricing" target="_blank" rel="noopener">Check the free plan and limits ↗</a>
+  </section>
+
+  <section class="panel">
+    <div class="section-head"><h2>Risk calculator</h2><span class="tag">POSITION PLANNING</span></div>
+    <label>Account balance (USD)</label><input id="balance" type="number" min="0" step="any" value="100">
+    <label>Risk per trade (%)</label><input id="riskPct" type="number" min="0.1" max="5" step="0.1" value="1">
+    <button class="primary full" id="calcRisk">Calculate risk amount</button>
+    <div class="risk-output" id="riskOutput">Risk amount: $1.00 (based on the example balance)</div>
+    <p class="hint">This calculates a cash risk budget only. It does not calculate broker lot size, margin or contract specifications.</p>
+  </section>
+
+  <section class="warning">
+    <strong>Important safety note</strong>
+    <p>This app is an educational analysis tool, not a broker, financial adviser or automatic trading bot. It does not place orders. Verify prices with your broker, backtest, and practise on a demo account before risking money. No signal guarantees profit.</p>
+  </section>
+  <footer>NABELION AI TRADER · Built for learning · v1.0</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
